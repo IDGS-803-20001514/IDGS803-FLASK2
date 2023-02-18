@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="col-xs-6">
+    {% from "_macros.html" import render_field %}
+    <form action="" method="POST">
+        {{ render_field(form.matricula) }}
+        {{ render_field(form.nombre) }}
+        {{ render_field(form.apeterno) }}
+        {{ render_field(form.email) }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Cajas Dinamicas</h1>
+
+            <label for="caja1">Numero</label>
+
+            <form action="">
+                <label for="numero">Numero de Cajas</label>
+                <input type="number" name="numero" id="numero" class="form-control" placeholder="Numero de Cajas">
+
+                <button type="submit" class="btn btn-primary">Generar</button>
+            </form>
+
+            {% from "_macros.html" import render_cajas %}
+            <form action="" method="POST">
+                {{ render_cajas(form.numero) }}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

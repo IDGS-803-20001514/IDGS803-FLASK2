@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1 align="center" class="p-2">Cinepolis</h1>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-4">
+
+            <h2 align="center" class="p-2">Entradas</h2>
+
+            <form action="/boletos" method="POST">
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Nombre</span>
+                    <input type="text" class="form-control" name="nombre" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Cantidad Compradores</span>
+                    <input type="number" class="form-control" name="cantidadCompradores" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Tarjeta Cineco</span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="tarjetaCine" id="inlineCheckbox1"
+                                value="1">
+                            <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="tarjetaCine" id="inlineCheckbox1"
+                                value="0">
+                            <label class="form-check-label" for="inlineCheckbox1">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Cantidad de Boletos</span>
+                    <input type="number" class="form-control" name="cantidadBoletos" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                </div>
+
+                <div align="right">
+                    <button class="btn btn-success mb-3">Procesar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-4">
+
+        </div>
+
+        <div class="col-4">
+
+            <br><br><br>
+
+            <h2 align="center">Salidas</h2>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Valor a pagar</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" value="{{ result }}">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
