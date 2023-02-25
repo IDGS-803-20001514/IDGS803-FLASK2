@@ -1,22 +1,20 @@
-{% macro render_input(name, placeholder, type="text") %}
+{% macro render_input(name, placeholder, type = "text") %}
 
 <div class="control-group">
-  <div>
-    <label for="{{name}}" class="control-label">{{ placeholder }}</label>
-  
-    <input type="{{type}}" name="{{name}}" class="form-control" value="">
+  <label for="{{ name }}" class="control-label">{{ placeholder }}</label>
+  <div class="controls">
+    <input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}" value="">
   </div>
 </div>
 
 {% endmacro %}
-
 
 {% macro render_field(field) %}
 
 <div class="control-group">
   <div class="controls">
     {{ field.label }}
-    {{ field(**kwargs)|safe }}
+    {{ field(**kwargs) | safe }}
   </div>
 </div>
 

@@ -2,6 +2,16 @@
 
 {% block content %}
 
-  <h1>{{valores}}</h1>
+<div class="container-form">
+  <div class="col-xs-6">
+    <h5>Número mayor es: {{ numMayor }}</h5>
+    <h5>Número menor es: {{ numMenor }}</h5>
+    <h5>Promedio: {{ promedio }}</h5>
+    {% for repeticion in repeticiones %}
+    <h5>{{ repeticion }}</h5>
+    {% endfor %}
+    <a href="/" class="btn btn-default btn-success">REGRESAR AL INICIO</a>
+  </div>
+</div>
 
 {% endblock %}
