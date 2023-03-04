@@ -1,35 +1,38 @@
+from collections import Counter
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/')
 def formulario():
-    return render_template('form.html')
+    return render_template('indexCajasDinamicas.html')
            
-@app.route("/NumInputs", methods = ['GET', 'POST'])
+@app.route("/numInputs", methods = ['GET', 'POST'])
 def numInputs():
     if request.method == 'POST':
-        inputs = int(request.form.get('txtInput'))
+        numeroInputs = int(request.form.get('txtNumeroInputs'))
         
-        return render_template('numero.html', inputs = inputs)
+        return render_template('cajasDinamicasInputs.html', numeroInputs = numeroInputs)
 
 
-@app.route("/Calculo", methods = ['POST'])
-def calculo():
-  listaString = request.form.getlist('txtNumero')
-  numeros = list(map(int, listaString))
+@app.route("/cajasDinamicasInputs", methods = ['POST'])
+def cajasDinamicasInputs():
+  numeroCaja = request.form.getlist('txtNumeroR')
+  lstNumero = list(map(int, numeroCaja))
 
-  numMayor = max(numeros)
-  numMenor = min(numeros)
+  mayor = max(lstNumero)
+  menor = min(lstNumero)
 
-  promedio = sum(numeros) / len(numeros)
+  promedio = sum(lstNumero) / len(lstNumero)
 
-  repeticiones = []
-  for numero in numeros:
-    apariciones = numeros.count(numero)
-    repeticiones.append("{} aparece {} veces".format(numero, apariciones))
+  contador = Counter(numeroCaja)
+  resultados = contador.most_common()
+  resultado = []
+  for i in resultados:
+        if i[1] > 1:
+            resultado.append('El numero {0} se repite: {1}'.format(i[0], i[1]))
 
-  return render_template('resultado.html', numMayor = numMayor, numMenor = numMenor, promedio = promedio, repeticiones = repeticiones)
+  return render_template('cajasDinamicasResultado.html', numMayor = mayor, numMenor = menor, promedio = promedio, resultadoFinal = resultado)
 
 if __name__ == "__main__":
-    app.run(debug = True, port = 3000)
+    app.run(debug = True, port = 8080)

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-form" align="center">
+  <div class="col-xs-6">
+    {% from "_macros.html" import render_input %}
+    <h2 align="center">Cajas Dinamicas</h2>
+    <form action="/numInputs" method="POST">
+      <div class="control-group">
+        <div class="controls">
+          {{ render_input("txtNumeroInputs", "Numero de Inputs a Generar", type = "number") }}
+          <input type="submit" class="btn btn-default btn-primary" value="Generar Inputs">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

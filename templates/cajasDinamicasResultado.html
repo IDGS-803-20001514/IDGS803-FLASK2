@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-form" align="center">
+  <div class="col-xs-6">
+    <h1>Resultados</h1><br>
+    <i>El número mayor es: {{ numMayor }}</i><br><br>
+    <i>El número menor es: {{ numMenor }}</i><br><br>
+    <i>El promedio de los números es: {{ promedio }}</i><br><br>
+    {% for result in resultadoFinal %}
+    <i>{{ result }} </i>
+    {% endfor %}
+    <br><br><a href="/" class="btn btn-default btn-primary">Regresar</a>
+  </div>
+</div>
+
+{% endblock %}
